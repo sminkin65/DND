@@ -18,6 +18,14 @@ def init():
         GPIO.setup(in3,GPIO.OUT)
         GPIO.setup(in4,GPIO.OUT)
 
+# Direction		S1 S2 S3 S4
+# Front			0  1  0  1
+# Back			1  0  1  0
+# Soft Right		0  1  0  0
+# Hard Right		0  1  1  0
+# Soft Left		0  0  0  1
+# Hard Left		1  0  0  1
+# Stop			0  0  0  0 
 def movement(tf, state_one, state_two, state_three, state_four):
 	init()
         GPIO.output(in1, state_one)
