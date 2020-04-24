@@ -1,0 +1,41 @@
+#from gpiozero import Robot
+import RPi.GPIO as GPIO
+#import gpiozerao
+from time import sleep
+GPIO.setwarnings(False)
+#robot = Robot(left=(4,14),right=(23,24))
+#In2,In4=1 is forward
+
+in1 = 4
+in2 = 14
+in3 = 23
+in4 = 24
+
+def init():
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(in1,GPIO.OUT)
+        GPIO.setup(in2,GPIO.OUT)
+        GPIO.setup(in3,GPIO.OUT)
+        GPIO.setup(in4,GPIO.OUT)
+
+def movement(tf, state_one, state_two, state_three, state_four):
+	init()
+        GPIO.output(in1, state_one)
+        GPIO.output(in2, state_two)
+        GPIO.output(in3, state_three)
+        GPIO.output(in4, state_four)
+        sleep(tf)
+        GPIO.cleanup()
+
+movement(2, 0, 1, 0, 2)
+movement(1, 0, 0, 0, 0)
+movement(1, 0, 1, 0, 0)
+movement(1, 0, 0, 0, 0)
+movement(1, 0, 0, 0, 1)
+movement(1, 0, 0, 0, 0)
+movement(1, 0, 1, 1, 0)
+movement(1, 0, 0, 0, 0)
+movement(1, 1, 0, 0, 1)
+movement(1, 0, 0, 0, 0)
+movement(1, 1, 0, 1, 0)
+movement(1, 0, 0, 0, 0)
